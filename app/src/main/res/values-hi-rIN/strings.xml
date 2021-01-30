@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">spriffy.user@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="default_notification_channel_id">channel</string>
+    <string name="menu_home">"होम "</string>
+    <string name="menu_gallery">" गैलरी"</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="next">" आगे"</string>
+    <string name="skip">"स्किप "</string>
+    <string name="network_error">Network Error</string>
+    <string name="internet_error_warning_message">सुनिश्चित करें कि आपके पास एक सक्रिय इंटरनेट कनेक्शन है</string>
+    <string name="msg_no_internet_connection">कोई इंटरनेट कनेक्शन नहीं!</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="start">समझ गया</string>
+
+    <string name="slide_1_title">Trusted News</string>
+    <string name="slide_1_desc">Today or any day that phone may ring and bring good news.</string>
+
+    <string name="slide_2_title">News For you</string>
+    <string name="slide_2_desc">We relish news of our heroes, forgetting that we are extraordinary to somebody too.</string>
+
+    <string name="slide_3_title">No Fake News </string>
+    <string name="slide_3_desc">When fake news is repeated, it becomes difficult for the public to discern what is real.</string>
+
+    <string name="slide_4_desc">" यह आश्चर्यजनक है कि दुनिया में हर दिन होने वाली खबरों की मात्रा हमेशा सिर्फ अखबार के अनुरूप होती है।"</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
+    <string name="login_email_hint">
+ईमेल</string>
+    <string name="login_password_hint">पासवर्ड</string>
+    <string name="hint_location">अपना स्थान चुनें</string>
+    <string name="submit">प्रस्तुत</string>
+    <string name="forgot_password">पासवर्ड भूल गए?</string>
+    <string name="err_msg_mobile">कृपया अपना मोबाइल नंबर दर्ज करें</string>
+    <string name="err_msg_otp">कृपया एक वैध ओ टी.पी. डालें</string>
+    <string name="err_msg_mobile_length">कृपया अपना मोबाइल नंबर 10 अंक दर्ज करें।</string>
+    <string name="err_msg_pass">कृपया अपना मोबाइल नंबर 10 अंक दर्ज करें।</string>
+    <string name="recharge">"रिचार्ज  "</string>
+    <string name="enter_wallet_amount">" वॉलेट राशि दर्ज करें"</string>
+    <string name="recharge_wallet">" रिचार्ज वॉलेट"</string>
+    <string name="my_wallet_amount">" माई वॉलेट राशि"</string>
+    <string name="logout">लॉग आउट</string>
+    <string name="contact">संपर्क करें</string>
+    <string name="search_hint">यहाँ ढूँढे</string>
+    <string name="no_data_found">कोई डेटा नहीं मिला..</string>
+    <string name="service_id">SERVICE ID :</string>
+    <string name="update_vehicle_image">---- Vehicle Images ----</string>
+    <string name="update_vehicle_info">---- Vehicle Information ----</string>
+    <string name="vehicle_front_image">Vehicle Front Image</string>
+    <string name="vehicle_back_image">Vehicle Back Image</string>
+    <string name="vehicle_side_image_1">Vehicle Side Image 1</string>
+    <string name="optional_image_1">Optional Image 1</string>
+    <string name="optional_image_2">Optional Image 2</string>
+    <string name="address">" ब्रीफ.इन (डिजिटल बिजनेस) 304/82 इंद्रा पुरी कॉलोनी नई बैरहना प्रयागराज पिन कोड: 211003 उत्तर प्रदेश"</string>
+    <string name="status">Status</string>
+    <string name="Amount">Amount</string>
+    <string name="title_activity_invoice">FullscreenActivity</string>
+    <string name="my_account">मेरा खाता</string>
+    <string name="user_info">" उपयोगकर्ता जानकारी"</string>
+    <string name="basic_details">Basic Details</string>
+    <string name="edit">Edit</string>
+    <string name="shop_name">Shop Name</string>
+    <string name="view">View</string>
+    <string name="accept">Accept</string>
+    <string name="name">" नाम:"</string>
+    <string name="address_">" पता:"</string>
+    <string name="verify">Verify</string>
+    <string name="car_model">Car Model</string>
+    <string name="rupee">\u20b9</string>
+    <string name="registeration_number_ab12xy1234">Registeration Number (AB12XY1234)</string>
+    <string name="odometer_reading">Odometer Reading</string>
+    <string name="balance">Balance :</string>
+    <string name="message">Message :</string>
+    <string name="reject">Reject</string>
+    <string name="tagline">" आपका मॉर्निंग अपडेट।"</string>
+    <string name="enter_the_verification_code">सत्यापन प्रक्रिया को पूरा करने के लिए कृपया नीचे दिए गए ओटीपी को दर्ज करें</string>
+    <string name="resend_code">पुन: कोड भेजे</string>
+    <string name="login_or_sign_up">लॉग इन या साइन अप करें</string>
+    <string name="currency">₹</string>
+    <string name="db">DB</string>
+    <string name="title_activity_d_b_dashboard">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">सूचनाएं</string>
+    <string name="location_api_key_id">AIzaSyCfKKl5LsMfeU2M7-lqCf2qWoNC0rYpilg</string>
+    <!--live-->
+    <!--    <string name="razor_api_key">rzp_live_WFDy4MdlBhWbkd</string>-->
+    <!--test-->
+    <string name="razor_api_key">rzp_test_LOXX1hSpG4g3eh</string>
+    <string name="noitem_incart">Your cart is empty</string>
+    <string name="noitem_incart_msg">You have no items in your shopping cart.\nLets\'s go buy something!</string>
+    <string name="shop_now">Shop Now</string>
+
+    <!--order status-->
+    <string name="paid">Paid</string>
+    <string name="unpaid">Unpaid</string>
+    <string name="pending">pending</string>
+    <string name="all">All</string>
+    <string name="accepted">Accepted</string>
+    <string name="delivered">Delivered</string>
+    <string name="completed">Completed</string>
+    <string name="rejected">Rejected</string>
+    <string name="founder_of_briefnn">फाउंडर ऑफ़ ब्रीफ़न</string>
+    <string name="name_of_founder">उदयन</string>
+    <string name="media_reporter">Media</string>
+    <string name="Dev">हिमांशु</string>
+    <string name="fathers_name">" पिता का नाम"</string>
+    <string name="mobile_number">" मोबाइल नंबर"</string>
+    <string name="address_1">"एड्रेस "</string>
+    <string name="forget_password">" पासवर्ड भूल गए"</string>
+    <string name="user_name">Sunny Shah</string>
+    <string name="news_today">According to the Central Pollution Control Board(CPCB) mobile app, SAMEER, the city s air quality index (AQI) was recorded at 401.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="virification_code_text">सत्यापन कोड दर्ज करें जिसे हमने अभी आपको अपने मोबाइल नंबर पर भेजा है</string>
+    <string name="title_activity_profile">" प्रोफ़ाइल"</string>
+    <string name="youtube_api_key">AIzaSyB3mE05Q-5P4qO-1vMZVTzTw_oGDk_AUb0</string>
+    <string name="app_name">Briefn</string>
+    <string name="action_settings">" समायोजन"</string>
+    <string name="e_mail">" ईमेल"</string>
+    <string name="first_name">फर्स्ट  नेम</string>
+    <string name="select_language">भाषा का चयन करें</string>
+    <string name="slide_4_title">विज्ञापन  फ्री</string>
+    <string name="faqs">" पूछे जाने वाले प्रश्न"</string>
+    <string name="contact_us">" संपर्क करें"</string>
+    <string name="share_app">" ऐप शेयर करें"</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="terms_amp_condition">नियम और शर्त</string>
+    <string name="about_us">" हमारे बारे में"</string>
+    <string name="live_chat">सीधी बातचीत</string>
+    <string name="mobile_verification">मोबाइल सत्यापन</string>
+    <string name="please_enter_your_phone_number">कृपया अपना फोन नंबर दर्ज करें</string>
+    <string name="don_t_worry_your_number_will_not_be_shared_with_anyone">चिंता मत करो कि आपका नंबर किसी के साथ साझा नहीं किया जाएगा</string>
+    <string name="new_user_register_now">नया उपयोगकर्ता? अभी पंजीकरण करें</string>
+    <string name="already_have_an_account">क्या आपके पास पहले से एक खाता मौजूद है?</string>
+    <string name="subscription_plan">सदस्यता योजना</string>
+    <string name="cancel">रद्द करना</string>
+    <string name="ok">ठीक</string>
+    <string name="related_news">सम्बंधित खबर</string>
+    <string name="top_news">टॉप न्यूज़</string>
+    <string name="registered_office">पंजीकृत कार्यालय</string>
+    <string name="business_office">कारोबार कार्यालय</string>
+    <string name="_34_balaji_nagar_bhopal_madhya_pradesh">34 बालाजी नगर, भोपाल मध्य प्रदेश</string>
+    <string name="email_address">ईमेल पता</string>
+    <string name="shuklabriefx_in_gmail_com">शुक्लब्रीफ्स.इन@जीमेल.कॉम </string>
+    <string name="video">वीडियो</string>
+    <string name="search">सर्च</string>
+    <string name="account_info">अकाउंट इन्फो</string>
+    <string name="name1">नाम</string>
+    <string name="mobile1">मोबाइल</string>
+    <string name="email1">ईमेल</string>
+    <string name="address1">पता</string>
+    <string name="subscription_plan1">सब्सक्रिप्शन प्लान</string>
+    <string name="valid_till">वैलिड टिल</string>
+    <string name="plan_name">प्लान नाम</string>
+    <string name="appsharing">देश-दुनिया की हर जानकारी परक खबर, नौकरी की जानकारी के लिए अभी डाउनलोड करें</string>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_lightgray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".dashboard.TabAdapter.NewsFragment">
+    <LinearLayout
+        android:id="@+id/searchBarll"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whiteTextColor"
+        android:layout_marginBottom="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/whiteTextColor"
+            >
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:padding="5dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_backarrow"
+                />
+            <LinearLayout
+                android:layout_alignParentTop="true"
+                android:id="@+id/searchll"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/serachbar_layout"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:scrollbars="vertical"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:nestedScrollingEnabled="false"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewheader"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:scrollbars="vertical"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:nestedScrollingEnabled="false"
+        />
+</LinearLayout>

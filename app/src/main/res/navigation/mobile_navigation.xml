@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.smartwebarts.briefnx.fragments.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_myProfileFragment"
+            app:destination="@id/myProfileFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_nav_home_to_serviceRequestFragment"
+            app:destination="@id/serviceRequestFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_nav_home_to_paymentHistoryFragment"
+            app:destination="@id/paymentHistoryFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.smartwebarts.briefnx.fragments.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.smartwebarts.briefnx.fragments.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.smartwebarts.briefnx.fragments.myprofile.MyProfileFragment"
+        android:label="my_profile_fragment"
+        tools:layout="@layout/my_profile_fragment" />
+    <fragment
+        android:id="@+id/serviceRequestFragment"
+        android:name="com.smartwebarts.briefnx.fragments.servicerequest.ServiceRequestFragment"
+        android:label="service_request_fragment"
+        tools:layout="@layout/service_request_fragment" >
+        <action
+            android:id="@+id/action_serviceRequestFragment_to_workInProgressFragment"
+            app:destination="@id/workInProgressFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/workInProgressFragment"
+        android:name="com.smartwebarts.briefnx.fragments.workprogress.WorkInProgressFragment"
+        android:label="work_in_progress_fragment"
+        tools:layout="@layout/work_in_progress_fragment" />
+    <fragment
+        android:id="@+id/paymentHistoryFragment"
+        android:name="com.smartwebarts.briefnx.fragments.paymenthistory.PaymentHistoryFragment"
+        android:label="payment_history_fragment"
+        tools:layout="@layout/payment_history_fragment" />
+</navigation>

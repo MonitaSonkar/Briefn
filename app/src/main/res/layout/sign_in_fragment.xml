@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.login.SignInFragment"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:layout_gravity="center">
+
+        <LinearLayout
+            android:id="@+id/abc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/dashboard_bottom_roundbg"
+            android:padding="20dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    style="@style/viewParent.headerText.NoMode"
+                    android:text="@string/mobile_verification"/>
+
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:visibility="gone"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    tools:ignore="ContentDescription" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/textColor"
+                android:text="@string/please_enter_your_phone_number"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputEmail"
+                style="@style/parent"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/textColor"
+               app:hintTextColor="@color/textColor"
+                android:outlineSpotShadowColor="@color/textColor"
+                android:outlineAmbientShadowColor="@color/textColor"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_mobile"
+                    style="@style/modifiedEditText"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:focusable="true"
+                    android:textColorHint="@color/textColor"
+                    android:maxLines="1"
+                    android:hint="@string/mobile_number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputPassword"
+                style="@style/parent"
+                android:backgroundTint="@color/textColor"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/textColor"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/textColor"
+                app:hintTextColor="@color/textColor"
+
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_password"
+                    style="@style/modifiedEditText"
+                    android:hint="@string/login_password_hint"
+                    android:maxLines="1"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/viewParent"
+                android:text="@string/don_t_worry_your_number_will_not_be_shared_with_anyone"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/newsMoreTextSize"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/forgetPassword"
+                style="@style/viewParent"
+                android:text="@string/forget_password"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/newsMoreTextSize"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"/>
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/cirLoginButton"
+                style="@style/loginButton"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_color="#FFF"
+                android:text="Submit"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                app:spinning_bar_padding="6dp"
+                app:initialCornerAngle="27dp"/>
+
+            <TextView
+                android:id="@+id/register"
+                style="@style/parent"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/textColor"
+                android:textSize="17sp"
+                android:text="@string/new_user_register_now"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="12"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_marginTop="30dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    style="@style/viewParent.headerText.NoMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Use other Methods"
+                    android:layout_weight="6"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_weight="3"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="20dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_google_plus"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/skip"
+                app:spinning_bar_width="4dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:spinning_bar_color="#FFF"
+                android:visibility="gone"
+                android:text="SKIP"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/bg_blue_outline"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                app:spinning_bar_padding="6dp"
+                app:initialCornerAngle="27dp"/>
+
+        </LinearLayout>
+<ImageView
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_marginTop="20dp"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:layout_below="@+id/abc"
+    android:src="@drawable/logo"/>
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="11dp"
+        android:elevation="40dp"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_side_bg"/>
+
+    <ImageView
+        android:id="@+id/iv_register"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/ic_add_img"
+        android:elevation="40dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="30dp"/>
+</RelativeLayout>

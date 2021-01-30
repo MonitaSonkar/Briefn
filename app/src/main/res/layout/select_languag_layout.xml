@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+    app:cardCornerRadius="3dp"
+    android:layout_gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/iconColor"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:text="Select Language"
+                android:gravity="center"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content"/>
+
+<LinearLayout
+    android:layout_below="@+id/title1"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:gravity="center_horizontal"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+   <RadioButton
+       android:id="@+id/hindi"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/colorPrimaryDark"
+       android:textSize="@dimen/_16sdp"
+       android:textStyle="bold"
+       android:weightSum="1" />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:src="@drawable/ic_flag_of_india"/>
+</LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <RadioButton
+        android:id="@+id/english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/_16sdp"
+        android:weightSum="1"
+        android:textStyle="bold"/>
+    <ImageView
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/us"/>
+</LinearLayout>
+</LinearLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>

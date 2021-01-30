@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#600b04</color>
+    <color name="colorPrimaryDark">#380000</color>
+    <color name="colorAccent">#933b2d</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="textColorLayout">#A5A8A6</color>
+    <color name="color_lightgray">#D3D1D1</color>
+    <color name="color_gray">#767877</color>
+    <color name="textColorDefault">#525352</color>
+    <color name="iconColor">#FEB819</color>
+    <!--colors for profile-->
+    <color name="profilePrimaryDark">#FF3B30</color>
+    <color name="profileAccentColor">#F7F7F7</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="profileBackground">#fff</color>
+    <color name="blackTextColor">#000</color>
+    <color name="profileEditTextColor">#707070</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#ffffff</color>
+
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/transparent"
+    tools:context=".dashboard.TabAdapter.SubscribtionDailog"
+    app:cardBackgroundColor="@color/colorPrimary">
+    <com.google.android.material.card.MaterialCardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardBackgroundColor="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/whiteTextColor"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/helvetica_regular"
+                android:text="@string/subscription_plan"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/headertext"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cancel_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_view"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/ok_tv"
+                android:background="@color/colorPrimaryDark"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center_horizontal"
+                android:minWidth="100dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/cancel"
+                android:textColor="@color/whiteTextColor"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:id="@+id/ok_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_view"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center_horizontal"
+                android:minWidth="100dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/ok"
+                android:textColor="@color/whiteTextColor"
+                android:textSize="@dimen/_16sdp" />
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

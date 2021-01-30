@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/swipe"
+    tools:ignore="ContentDescription, UselessParent, DisableBaselineAlignment,
+    DisableBaselineAlignment, InefficientWeight, NestedWeights"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.home.HomeFragment">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/dashboard_bottom_roundbg"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/openMyProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        style="@style/dashboardImageView"
+                        android:layout_above="@id/textView"
+                        android:src="@drawable/ic_profile" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/dashboardTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="My Profile" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/openServiceRequest"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        style="@style/dashboardImageView"
+                        android:layout_above="@id/textView1"
+                        android:src="@drawable/ic_service_request" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        style="@style/dashboardTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="Service Request" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/openPaymentHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        style="@style/dashboardImageView"
+                        android:layout_above="@id/textView2"
+                        android:src="@drawable/ic_payment_history" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        style="@style/dashboardTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="Payment History" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/openWithrawlPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        style="@style/dashboardImageView"
+                        android:layout_above="@id/textView3"
+                        android:src="@drawable/ic_withdrawl_history" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        style="@style/dashboardTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="Withdrawl Payment" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/openGenerateInvoice"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        style="@style/dashboardImageView"
+                        android:layout_above="@id/textView4"
+                        android:src="@drawable/ic_invoice" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        style="@style/dashboardTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="Generate Invoice" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/openScheduledService"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        style="@style/dashboardImageView"
+                        android:layout_above="@id/textView5"
+                        android:src="@drawable/ic_scheduled_service" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        style="@style/dashboardTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="Schedule Service" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/openServiceRequestHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        style="@style/dashboardImageView"
+                        android:layout_above="@id/textView6"
+                        android:src="@drawable/ic_service_request_history" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        style="@style/dashboardTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="Service Request History" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

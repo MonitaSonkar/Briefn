@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "926755586639",
+    "project_id": "briefn",
+    "storage_bucket": "briefn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926755586639:android:45348106475f696959203a",
+        "android_client_info": {
+          "package_name": "com.smartwebarts.briefn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926755586639-us0lgutmo0b8na4pk50d2uf26b5o34jq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartwebarts.briefn",
+            "certificate_hash": "deabadeca4c5ed881877265d410781be50457746"
+          }
+        },
+        {
+          "client_id": "926755586639-f9tc4m83o58dd6vdmp1ku18f4cai5umu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbnrqOZiEShRvWUqdBnpXWXv272pMfI3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926755586639-f9tc4m83o58dd6vdmp1ku18f4cai5umu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

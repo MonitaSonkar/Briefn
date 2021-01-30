@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="reasonsforcancellation">
+        <item>Select a reason</item>
+        <item>Product not required</item>
+        <item>I am out of city</item>
+        <item>Cheaper alternative available</item>
+        <item>Review from friends/relatives</item>
+    </string-array>
+</resources>

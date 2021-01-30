@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.login.OTPFragment"
+    android:id="@+id/abc">
+
+
+    <RelativeLayout
+        android:id="@+id/abcd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dashboard_bottom_roundbg"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo"
+            />
+<TextView
+    android:id="@+id/verificationtext"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/logo"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:textColor="@color/textColor"
+    android:textSize="@dimen/_12sdp"
+    android:text="@string/virification_code_text"/>
+        <com.goodiebag.pinview.Pinview
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_below="@+id/verificationtext"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="30sp"
+            app:inputType="number"
+            app:pinBackground="@drawable/background_pinview_bottom_line"
+            app:pinHeight="@dimen/dp_36"
+            app:pinLength="4"
+            app:pinWidth="@dimen/dp_36"
+            app:splitWidth="@dimen/dp_16" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otp_view"
+            android:textColor="@color/textColor"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible"
+            android:text="8840048791"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/number"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/textColor"
+            android:text="60"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/resendcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timer"
+            android:layout_centerHorizontal="true"
+            android:enabled="false"
+            android:text="@string/resend_code"
+            android:textColor="@color/textColor"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+        android:id="@+id/submit"
+        style="@style/loginButton"
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:layout_gravity="center_horizontal"
+        app:spinning_bar_color="#FFF"
+        app:spinning_bar_padding="6dp"
+        app:spinning_bar_width="4dp" />
+
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_images_iam_idproofing_illustration_iam_idproofing"/>
+</LinearLayout>
