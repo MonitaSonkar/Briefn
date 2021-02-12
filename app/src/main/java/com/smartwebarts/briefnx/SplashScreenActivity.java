@@ -28,6 +28,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -74,7 +75,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
-    private DashboardViewModel mViewModel;
+
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -173,8 +174,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
-        mViewModel.init();
+
         setContentView(R.layout.activity_splash_screen);
 
         Configuration config = getBaseContext().getResources().getConfiguration();
@@ -209,22 +209,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         init();
 
         mDelayHandler.postDelayed(runnable, SPLASH_DELAY);
-        Observer observer1 = new Observer() {
-            @Override
-            public void onChanged(Object o) {
-
-                UtilMethods.subscribtion_plans = (List<SubscriptionModel>) o;
-            }
-        };
-        mViewModel.getPackages().observe(SplashScreenActivity.this, observer1);
-
-        if (UtilMethods.INSTANCE.isNetworkAvialable(SplashScreenActivity.this)) {
-            Dialog dialog = UtilMethods.getCommonProgressDialog(SplashScreenActivity.this);
-//            dialog.show();
-            mViewModel.callPackage("packeges", dialog);
-        } else {
-            UtilMethods.INSTANCE.internetNotAvailableMessage(SplashScreenActivity.this);
-        }
         startAnimation();
     }
 

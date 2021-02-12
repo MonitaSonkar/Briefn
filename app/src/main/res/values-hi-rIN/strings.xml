@@ -17,7 +17,7 @@
     <string name="network_error">Network Error</string>
     <string name="internet_error_warning_message">सुनिश्चित करें कि आपके पास एक सक्रिय इंटरनेट कनेक्शन है</string>
     <string name="msg_no_internet_connection">कोई इंटरनेट कनेक्शन नहीं!</string>
-
+    <string name="app_share_name"><b>ब्रीफ़न</b></string>
     <string name="title_activity_welcome">Home Screen</string>
     <string name="start">समझ गया</string>
 
@@ -125,7 +125,7 @@
     <string name="virification_code_text">सत्यापन कोड दर्ज करें जिसे हमने अभी आपको अपने मोबाइल नंबर पर भेजा है</string>
     <string name="title_activity_profile">" प्रोफ़ाइल"</string>
     <string name="youtube_api_key">AIzaSyB3mE05Q-5P4qO-1vMZVTzTw_oGDk_AUb0</string>
-    <string name="app_name">Briefn</string>
+    <string name="app_name">ब्रीफ़न</string>
     <string name="action_settings">" समायोजन"</string>
     <string name="e_mail">" ईमेल"</string>
     <string name="first_name">फर्स्ट  नेम</string>
@@ -163,5 +163,8 @@
     <string name="subscription_plan1">सब्सक्रिप्शन प्लान</string>
     <string name="valid_till">वैलिड टिल</string>
     <string name="plan_name">प्लान नाम</string>
-    <string name="appsharing">देश-दुनिया की हर जानकारी परक खबर, नौकरी की जानकारी के लिए अभी डाउनलोड करें</string>
+    <string name="see_more">और देखें..</string>
+<!--    <string name="appsharing">देश-दुनिया की हर जानकारी परक खबर, नौकरी की जानकारी के लिए अभी डाउनलोड करें</string>-->
+    <string name="appsharing">पाएं अपने शहर में निकली हर सरकारी, प्राइवेट नौकरियों की जानकारी सबसे पहले. साथ में देश और विदेश की हर नॉलेजफुल खबरों का डोज भी
+        <!--देश-दुनिया की हर जानकारी परक खबर, नौकरी की जानकारी के लिए अभी--> डाउनलोड करें</string>
 </resources>

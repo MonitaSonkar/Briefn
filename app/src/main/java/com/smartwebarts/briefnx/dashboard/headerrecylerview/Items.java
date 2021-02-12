@@ -11,7 +11,7 @@ public class Items implements ListItem {
 
     SubArticleTopNews news;
 
-    public Items( SubArticleTopNews news)
+    public Items(SubArticleTopNews news)
     {
         this.news=news;
     }

@@ -3,7 +3,9 @@ package com.smartwebarts.briefnx.dashboard.headerrecylerview;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SubArticleTopNews{
+import java.io.Serializable;
+
+public class SubArticleTopNews implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -401,5 +403,14 @@ public class SubArticleTopNews{
         this.isPaid = isPaid;
     }
 
+    @SerializedName("pmt_status")
+    @Expose
+    private String pmtStatus;
+    public String getPmtStatus() {
+        return pmtStatus;
+    }
 
+    public void setPmtStatus(String pmtStatus) {
+        this.pmtStatus = pmtStatus;
+    }
 }

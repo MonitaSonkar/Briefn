@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,8 +72,14 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHo
 
     @Override
     public void onBindViewHolder(@NonNull MYviewHolder holder, int position) {
-
-       holder.description_of_News.setText(list.get(position).getTitle());
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+        String red = list.get(position).getDisplayTopic()+": ";
+        SpannableString redSpannable= new SpannableString(red);
+        redSpannable.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.iconColor)), 0, red.length(), 0);
+        builder.append(redSpannable);
+        builder.append(Html.fromHtml(list.get(position).getTitle()));
+        holder.description_of_News.setText(builder, TextView.BufferType.SPANNABLE);
+//       holder.description_of_News.setText(list.get(position).getTitle());
         Glide.with(context)
                 .load(Urls.NEWS_IMGES+list.get(position).getImage())
                 .placeholder(R.drawable.img_not_found)
@@ -111,52 +120,14 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHo
             news_share=itemView.findViewById(R.id.news_share);
             comment=itemView.findViewById(R.id.comment);
             news=itemView.findViewById(R.id.news_image);
-           /* like.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "Like...", Toast.LENGTH_SHORT).show();
-                }
-            });*/
-          /*  share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                    shareIntent.setType("text/plain");
-                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
-                    String shareMessage= "\nLet me recommend you this application\n\n";
-                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-                    context.startActivity(Intent.createChooser(shareIntent, "choose one"));
-                }
-            });*/
-           /* news.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "News Images...", Toast.LENGTH_SHORT).show();
-                }
-            });*/
-           /* comment.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "Comment...", Toast.LENGTH_SHORT).show();
-                }
-            });*/
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(list.get(getAdapterPosition()).getPmtStatus().equalsIgnoreCase("0"))
                     {
                         showSubscriptionDailog(UtilMethods.subscribtion_plans,list.get(getAdapterPosition()).getId());
-                       /* Observer observergetPAckages=new Observer() {
-                            @Override
-                            public void onChanged(Object o) {
-                                List<SubscriptionModel> package_list =(List<SubscriptionModel>)o;
-//                                showSubscriptionDailog(package_list,list.get(getAdapterPosition()).getId());
 
-                            }
-                        };
-                        viewModel.getPackages().observe(context,observergetPAckages);*/
-//                        getPackages(context);
 
                     }
                     else
@@ -207,31 +178,6 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHo
         i.putExtra("newslist", (Serializable) list);
         i.putExtra("position_id", adapterPosition);
         context.startActivity(i);
-        /*AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        final View customLayout = context.getLayoutInflater().inflate(R.layout.subscription_dailog_layout, null);
-        alertDialog.setView(customLayout);
-        alertDialog.setCancelable(false);
-        AlertDialog dialog = alertDialog.create();
-        RecyclerView recycler_view=customLayout.findViewById(R.id.recycler_view);
-        AppCompatTextView cancel=customLayout.findViewById(R.id.cancel_tv);
-        AppCompatTextView ok=customLayout.findViewById(R.id.ok_tv);
-        LinearLayoutManager mLayoutManagerVideo = new LinearLayoutManager(context);
-        mLayoutManagerVideo.setOrientation(LinearLayoutManager.VERTICAL);
-        recycler_view.setLayoutManager(mLayoutManagerVideo);
-        SubscriptionAdapter adapter =new SubscriptionAdapter(context,list);
-        recycler_view.setAdapter(adapter);
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               dialog.dismiss();
-            }
-        }); cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
 
-        dialog.show();*/
     }
 }

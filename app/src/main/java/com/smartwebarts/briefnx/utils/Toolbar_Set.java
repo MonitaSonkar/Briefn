@@ -219,10 +219,15 @@ public enum Toolbar_Set {
 
                 if (item.getItemId() == R.id.home) {
                     searchll.setVisibility(View.GONE);
-                    if (!(activity instanceof DashboardActivity)) {
+                    ((DashboardActivity)activity).tabLayout.getTabAt(0).select();
+                   /* Intent intent = new Intent(activity, DashboardActivity.class);
+                    activity.startActivity(intent);
+                    activity.finish();
+                    activity.overridePendingTransition(0, 0);*/
+               /* if (!(activity instanceof DashboardActivity)) {
                     activity.startActivity(new Intent(activity, DashboardActivity.class));
                         activity.finishAffinity();
-                    }
+                    }*/
 
                 }
                 else if (item.getItemId() == R.id.category){

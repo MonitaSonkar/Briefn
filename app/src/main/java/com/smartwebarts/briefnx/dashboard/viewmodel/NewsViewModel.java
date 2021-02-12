@@ -26,7 +26,7 @@ public class NewsViewModel extends AppSharedPreferences {
     public void init() {
         newsRepository = new NewsRepository();
         mutableLiveData = newsRepository.getNewsArtiles();
-//        mutableLiveDatapackages = newsRepository.getSubscription();
+        mutableLiveDatapackages = newsRepository.getSubscription();
     }
 
     public void callArticles(String loginUserId, String id, String sub_id, String language_set, Dialog dialog, String search_text, mCallBackResponse mCallBackResponse) {

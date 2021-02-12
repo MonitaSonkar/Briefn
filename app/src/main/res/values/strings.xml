@@ -2,6 +2,7 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="app_name">Briefn</string>
+    <string name="app_share_name"><b>Briefn</b></string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -168,6 +169,9 @@
     <string name="subscription_plan1">Subscription Plan</string>
     <string name="valid_till">Valid till</string>
     <string name="plan_name">Plan Name</string>
-    <string name="appsharing">To get information about country, world and jobs download an application</string>
+    <string name="see_more">See more..</string>
+<!--    <string name="appsharing">To get information about country, world and jobs download an application</string>-->
+    <string name="appsharing">Get the first information of every government and private jobs in your city. Along with
+        the dose of every knowledgeful news of the country and abroad, download it now</string>
 
 </resources>

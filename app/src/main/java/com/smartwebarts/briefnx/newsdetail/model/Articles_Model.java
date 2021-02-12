@@ -16,7 +16,7 @@ public class Articles_Model {
 
     @SerializedName("sub_article_data")
     @Expose
-    private List<SubArticleTopNews> subArticleData = null;
+    private List<NewsModelArticle> subArticleData = null;
 
     public PaymentArticleModel getPaymentData() {
         return paymentData;
@@ -33,11 +33,11 @@ public class Articles_Model {
     public void setNews(List<NewsModelArticle> news) {
         this.news = news;
     }
-    public List<SubArticleTopNews> getSubArticleData() {
+    public List<NewsModelArticle> getSubArticleData() {
         return subArticleData;
     }
 
-    public void setSubArticleData(List<SubArticleTopNews> subArticleData) {
+    public void setSubArticleData(List<NewsModelArticle> subArticleData) {
         this.subArticleData = subArticleData;
     }
 }

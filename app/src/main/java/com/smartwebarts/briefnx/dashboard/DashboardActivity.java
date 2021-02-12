@@ -141,7 +141,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
             updateAccessToken();
             getObserver();
-
             //set navigation toolbar
             navigationView = (NavigationView) findViewById(R.id.nav_view);
             setNavigationDrawer();
@@ -154,8 +153,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     Intent i = new Intent(DashboardActivity.this, SearchActivity.class);
                     i.putExtra("search_text", query);
                     startActivity(i);
-
-//                serchResult(query);
                     return true;
                 }
 
@@ -165,14 +162,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     return true;
                 }
             });
-        search.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
+            search.setOnCloseListener(new SearchView.OnCloseListener() {
+                @Override
+                public boolean onClose() {
 //                Toast.makeText(DashboardActivity.this, "close", Toast.LENGTH_SHORT).show();
-                searchll.setVisibility(View.GONE);
-                return false;
-            }
-        });
+                    searchll.setVisibility(View.GONE);
+                    return false;
+                }
+            });
 
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -181,6 +178,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     searchll.setVisibility(View.GONE);
                     int index = (tabLayout.getSelectedTabPosition());
                     if (index != 0) {
+                        Log.e("addOnTabSelected",""+tabLayout.getTabAt(index).getTag());
                         int position = index - 1;
                         String id = list.get(position).getId();
                         myDarta(id);
@@ -204,9 +202,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     searchll.setVisibility(View.GONE);
-                    int index = (subCat_tablayout.getSelectedTabPosition());
-                    String id = CotegoryModel.get(index).getId();
-                    dataUpdated(CotegoryModel.get(index).getId(), CotegoryModel.get(index).getSuperCategoryId());
+                    if (tabLayout.getSelectedTabPosition() != 0) {
+                        int index = (subCat_tablayout.getSelectedTabPosition());
+//                    String id = CotegoryModel.get(index).getId();
+                        dataUpdated(CotegoryModel.get(index).getId(), CotegoryModel.get(index).getSuperCategoryId());
+                    }
+
                 }
 
                 @Override
@@ -233,16 +234,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 setTopNewsViewpager();
             }
         };
-        mViewModel.getCategory().observe(DashboardActivity.this,observer);
+        mViewModel.getCategory().observe(DashboardActivity.this, observer);
 
         Observer observersubcat = new Observer() {
             @Override
             public void onChanged(Object o) {
 
-                CotegoryModel = (List<NewsByCategoryModel>)o;
-                if(CotegoryModel!=null)
-                {
-                    subCat_tablayout.setVisibility(View.VISIBLE);
+                CotegoryModel = (List<NewsByCategoryModel>) o;
+                if (CotegoryModel != null) {
+
                     viewPager.setVisibility(View.VISIBLE);
                     setSubCatAdapter(CotegoryModel);
                     dataUpdated(CotegoryModel.get(0).getId(), CotegoryModel.get(0).getSuperCategoryId());
@@ -250,7 +250,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
             }
         };
-        mViewModel.getSubCategory().observe(DashboardActivity.this,observersubcat);
+        mViewModel.getSubCategory().observe(DashboardActivity.this, observersubcat);
 
         if (UtilMethods.INSTANCE.isNetworkAvialable(DashboardActivity.this)) {
             Dialog dialog = UtilMethods.getCommonProgressDialog(DashboardActivity.this);
@@ -273,7 +273,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             UtilMethods.INSTANCE.internetNotAvailableMessage(DashboardActivity.this);
         }
     }
-
 
 
     //    public AdapterPositionListener listener;
@@ -308,7 +307,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     if (!TextUtils.isEmpty(list.get(i).getTitle())) {
                         String image_url = Urls.NEWS_imgesIcon + list.get(i).getImage();
                         String title = list.get(i).getTitle();
-                        tabLayout.addTab(tabLayout.newTab().setCustomView(createTabView(image_url, title)));
+                        tabLayout.addTab(tabLayout.newTab().setCustomView(createTabView(image_url, title)).setTag(list.get(i).getId()));
+//                        tabLayout.getTabAt(i).setTag(list.get(i).getId());
                     }
                 }
             } else {
@@ -316,7 +316,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     if (!TextUtils.isEmpty(list.get(i).getNameHi())) {
                         String image_url = Urls.NEWS_imgesIcon + list.get(i).getImage();
                         String title = list.get(i).getNameHi();
-                        tabLayout.addTab(tabLayout.newTab().setCustomView(createTabView(image_url, title)));
+                        tabLayout.addTab(tabLayout.newTab().setCustomView(createTabView(image_url, title)).setTag(list.get(i).getId()));
                     }
                 }
             }
@@ -570,23 +570,30 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 });
     }
 
-                    public void myDarta(String id) {
-                        if (UtilMethods.INSTANCE.isNetworkAvialable(DashboardActivity.this)) {
-                            Dialog dialog = UtilMethods.getCommonProgressDialog(DashboardActivity.this);
-                            dialog.show();
-                            mViewModel.callToSubcategoryApi(id,dialog, new mCallBackResponse() {
-                                @Override
-                                public void success(String from, String message) {
-                                }
-                                @Override
-                                public void fail(String from) {
-                                    UsefullMethods.showMessage(DashboardActivity.this, SweetAlertDialog.ERROR_TYPE, "Error", from, "OK", () -> {
-                                    });
-                                }
-                            });
-                        } else {
-                            UtilMethods.INSTANCE.internetNotAvailableMessage(DashboardActivity.this);
-                        }
+    public void myDarta(String id) {
+        if (UtilMethods.INSTANCE.isNetworkAvialable(DashboardActivity.this)) {
+            Dialog dialog = UtilMethods.getCommonProgressDialog(DashboardActivity.this);
+            dialog.show();
+            mViewModel.callToSubcategoryApi(id, dialog, new mCallBackResponse() {
+                @Override
+                public void success(String from, String message) {
+                    subCat_tablayout.setVisibility(View.VISIBLE);
+                    viewPager.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void fail(String from) {
+                    subCat_tablayout.setVisibility(View.GONE);
+                    viewPager.setVisibility(View.GONE);
+                    UsefullMethods.showMessage(DashboardActivity.this, SweetAlertDialog.ERROR_TYPE, "Error", from, "OK", () -> {
+                    });
+                }
+            });
+        } else {
+            subCat_tablayout.setVisibility(View.GONE);
+            viewPager.setVisibility(View.GONE);
+            UtilMethods.INSTANCE.internetNotAvailableMessage(DashboardActivity.this);
+        }
 
 //set data subcategory
 //                        UtilMethods.INSTANCE.TopnewsCureent(DashboardActivity.this, id, new mCallBackResponse() {
@@ -611,145 +618,146 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //                            }
 //                        });
 
-                    }
+    }
 
-                    private void setSubCatAdapter(List<NewsByCategoryModel> cotegoryModel) {
-                        ArrayList<NewsByCategoryModel> newsByCategoryModelArrayListeng;
-                        ArrayList<NewsByCategoryModel> newsByCategoryModelArrayListhin;
-                        if (language_set.equalsIgnoreCase("english")) {
-                            newsByCategoryModelArrayListeng = new ArrayList<>();
-                            for (int i = 0; i < cotegoryModel.size(); i++) {
-                                if (!TextUtils.isEmpty(cotegoryModel.get(i).getTitle())) {
-                                    newsByCategoryModelArrayListeng.add(cotegoryModel.get(i));
-                                }
-                            }
-                            setTablayout(newsByCategoryModelArrayListeng);
-                        } else {
-                            newsByCategoryModelArrayListhin = new ArrayList<>();
-                            for (int i = 0; i < cotegoryModel.size(); i++) {
-                                if (!TextUtils.isEmpty(cotegoryModel.get(i).getNameHi())) {
-                                    newsByCategoryModelArrayListhin.add(cotegoryModel.get(i));
-                                }
-                            }
-                            setTablayout(newsByCategoryModelArrayListhin);
-                        }
-                    }
+    private void setSubCatAdapter(List<NewsByCategoryModel> cotegoryModel) {
+        ArrayList<NewsByCategoryModel> newsByCategoryModelArrayListeng;
+        ArrayList<NewsByCategoryModel> newsByCategoryModelArrayListhin;
+        if (language_set.equalsIgnoreCase("english")) {
+            newsByCategoryModelArrayListeng = new ArrayList<>();
+            for (int i = 0; i < cotegoryModel.size(); i++) {
+                if (!TextUtils.isEmpty(cotegoryModel.get(i).getTitle())) {
+                    newsByCategoryModelArrayListeng.add(cotegoryModel.get(i));
+                }
+            }
+            setTablayout(newsByCategoryModelArrayListeng);
+        } else {
+            newsByCategoryModelArrayListhin = new ArrayList<>();
+            for (int i = 0; i < cotegoryModel.size(); i++) {
+                if (!TextUtils.isEmpty(cotegoryModel.get(i).getNameHi())) {
+                    newsByCategoryModelArrayListhin.add(cotegoryModel.get(i));
+                }
+            }
+            setTablayout(newsByCategoryModelArrayListhin);
+        }
+    }
 
-                    private void setTablayout(ArrayList<NewsByCategoryModel> newsByCategoryModelArrayListeng) {
-                        if (newsByCategoryModelArrayListeng.size() > 0) {
-                            subCat_tablayout.setVisibility(View.VISIBLE);
-                            TabLayoutAdapter adapter = new TabLayoutAdapter(getSupportFragmentManager(), newsByCategoryModelArrayListeng, language_set);
-                            if (newsByCategoryModelArrayListeng != null && newsByCategoryModelArrayListeng.size() > 0) {
-                                for (int i = 0; i < newsByCategoryModelArrayListeng.size(); i++) {
+    private void setTablayout(ArrayList<NewsByCategoryModel> newsByCategoryModelArrayListeng) {
+        if (newsByCategoryModelArrayListeng.size() > 0) {
+            viewPager.removeAllViews();
+//                            subCat_tablayout.setVisibility(View.VISIBLE);
+            TabLayoutAdapter adapter = new TabLayoutAdapter(getSupportFragmentManager(), newsByCategoryModelArrayListeng, language_set);
+            if (newsByCategoryModelArrayListeng != null && newsByCategoryModelArrayListeng.size() > 0) {
+                for (int i = 0; i < newsByCategoryModelArrayListeng.size(); i++) {
 //                NewsFragment newsFragment = new NewsFragment(cotegoryModel.get(i));
-                                    NewsFragment newsFragment = new NewsFragment();
+                    NewsFragment newsFragment = new NewsFragment();
 //                newsFragment.setNewsByCategoryModel(cotegoryModel.get(i));
-                                    adapter.add(newsFragment);
-                                }
-                            }
-                            viewPager.setAdapter(adapter);
-                            subCat_tablayout.setupWithViewPager(viewPager);
-                        } else {
-                            subCat_tablayout.setVisibility(View.GONE);
-                        }
+                    adapter.add(newsFragment);
+                }
+            }
+            viewPager.setAdapter(adapter);
+            subCat_tablayout.setupWithViewPager(viewPager);
+        } else {
+            subCat_tablayout.setVisibility(View.GONE);
+        }
 
-                    }
+    }
 
-                    private void setTopNewsViewpager() {
-                        viewPager.removeAllViews();
-                        TopNewsViewpagerAdapter adapter = new TopNewsViewpagerAdapter(getSupportFragmentManager());
-                        subCat_tablayout.setVisibility(View.GONE);
-                        viewPager.setVisibility(View.VISIBLE);
-                        NewsFragment newsFragment = new NewsFragment();
-                        adapter.add(newsFragment);
-                        viewPager.setAdapter(adapter);
-                        dataUpdated("", "");
-                    }
+    private void setTopNewsViewpager() {
+        viewPager.removeAllViews();
+        TopNewsViewpagerAdapter adapter = new TopNewsViewpagerAdapter(getSupportFragmentManager());
+        subCat_tablayout.setVisibility(View.GONE);
+        viewPager.setVisibility(View.VISIBLE);
+        NewsFragment newsFragment = new NewsFragment();
+        adapter.add(newsFragment);
+        viewPager.setAdapter(adapter);
+        dataUpdated("", "");
+    }
 
 
-                    public void setLangRecreate(String langval) {
-                        AppSharedPreferences preferences = new AppSharedPreferences(getApplication());
-                        preferences.setlanguage(langval);
-                        Configuration config = getBaseContext().getResources().getConfiguration();
-                        Locale locale = new Locale(langval);
-                        Locale.setDefault(locale);
-                        config.locale = locale;
-                        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-                        Intent intent = new Intent(DashboardActivity.this,DashboardActivity.class);
-                        startActivity(intent);
-                        finish();
-                        overridePendingTransition(0, 0);
+    public void setLangRecreate(String langval) {
+        AppSharedPreferences preferences = new AppSharedPreferences(getApplication());
+        preferences.setlanguage(langval);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        Locale locale = new Locale(langval);
+        Locale.setDefault(locale);
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        Intent intent = new Intent(DashboardActivity.this, DashboardActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(0, 0);
 //                        recreate();
-                    }
+    }
 
 
-                    public void startPayment() {
-                        /**
-                         * Instantiate Checkout
-                         */
-                        Checkout checkout = new Checkout();
-                        checkout.setKeyID("" + getString(R.string.razor_api_key));
+    public void startPayment() {
+        /**
+         * Instantiate Checkout
+         */
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("" + getString(R.string.razor_api_key));
 
 
-                        /**
-                         * Set your logo here
-                         */
-                        checkout.setImage(R.drawable.logo);
+        /**
+         * Set your logo here
+         */
+        checkout.setImage(R.drawable.logo);
 
-                        /**
-                         * Reference to current activity
-                         */
-                        final Activity activity = this;
+        /**
+         * Reference to current activity
+         */
+        final Activity activity = this;
 
-                        /**
-                         * Pass your payment options to the Razorpay Checkout as a JSONObject
-                         */
-                        try {
-                            JSONObject options = new JSONObject();
+        /**
+         * Pass your payment options to the Razorpay Checkout as a JSONObject
+         */
+        try {
+            JSONObject options = new JSONObject();
 
-                            /**
-                             * Merchant Name
-                             * eg: ACME Corp || HasGeek etc.
-                             */
-                            options.put("name", getString(R.string.app_name));
+            /**
+             * Merchant Name
+             * eg: ACME Corp || HasGeek etc.
+             */
+            options.put("name", getString(R.string.app_name));
 
-                            /**
-                             * Description can be anything
-                             * eg: Reference No. #123123 - This order number is passed by you for your internal reference. This is not the `razorpay_order_id`.
-                             *     Invoice Payment
-                             *     etc.
-                             */
-                            options.put("description", "Reference No. #123456");
-                            options.put("image", getDrawable(R.drawable.logo));
+            /**
+             * Description can be anything
+             * eg: Reference No. #123123 - This order number is passed by you for your internal reference. This is not the `razorpay_order_id`.
+             *     Invoice Payment
+             *     etc.
+             */
+            options.put("description", "Reference No. #123456");
+            options.put("image", getDrawable(R.drawable.logo));
 //            options.put("order_id", ""+model.getOrderid());
-                            options.put("currency", "INR");
+            options.put("currency", "INR");
 
-                            /**
-                             * Amount is always passed in currency subunits
-                             * Eg: "500" = INR 5.00
-                             */
+            /**
+             * Amount is always passed in currency subunits
+             * Eg: "500" = INR 5.00
+             */
 
 //            int dAmount = Integer.parseInt("0"+amount);
-                            int dAmount = Integer.parseInt("0" + 50);
-                            dAmount *= 100;
+            int dAmount = Integer.parseInt("0" + 50);
+            dAmount *= 100;
 
-                            options.put("amount", "" + dAmount);
+            options.put("amount", "" + dAmount);
 
-                            checkout.open(this, options);
-                        } catch (Exception e) {
-                            Log.e("DashBoard===", "Error in starting Razorpay Checkout", e);
-                        }
-                    }
+            checkout.open(this, options);
+        } catch (Exception e) {
+            Log.e("DashBoard===", "Error in starting Razorpay Checkout", e);
+        }
+    }
 
-                    @Override
-                    public void onPaymentSuccess(String s) {
+    @Override
+    public void onPaymentSuccess(String s) {
 //        buildJson(s);
-                    }
+    }
 
-                    @Override
-                    public void onPaymentError(int i, String s) {
+    @Override
+    public void onPaymentError(int i, String s) {
 
-                    }
+    }
 
 
     /*private void buildJson( String orderid) {

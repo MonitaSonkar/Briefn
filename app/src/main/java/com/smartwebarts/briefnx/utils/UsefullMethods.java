@@ -234,12 +234,15 @@ public class UsefullMethods {
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                         Uri bitmapUribitmp = UsefullMethods.getLocalBitmapUribitmp(resource,activity);
                         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.app_name);
+                        shareIntent.putExtra(Intent.EXTRA_SUBJECT,activity.getResources().getString(R.string.app_share_name));
                         shareIntent.putExtra(Intent.EXTRA_STREAM,  bitmapUribitmp);
                         shareIntent.setType("image/*");
-                        String shareMessage= "\nhttp://briefn.in/\n\n";
+//                      http://briefn.in/briefn_copy/post_detail/37/jobs/priya-prakash-varrier-video
+//                        String shareMessage= "*"+activity.getResources().getString(R.string.app_share_name);
+                        String shareMessage= "*"+activity.getResources().getString(R.string.app_share_name)+"*\n"+"http://briefn.in/briefn_copy/post_detail"+
+                                newsModelArticle.getSlug()+"\n\n";
                         String shareMessage1= "\n"+newsModelArticle.getTitle()+"\n\n";
-                        String dwonloadmessage= "\n"+R.string.appsharing+"\n";
+                        String dwonloadmessage= "\n"+activity.getResources().getString(R.string.appsharing)+"\n";
                         String completeshareMessage  = shareMessage1+shareMessage+dwonloadmessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
                         shareIntent.putExtra(Intent.EXTRA_TEXT, completeshareMessage);
                         activity.startActivity(Intent.createChooser(shareIntent, "choose one"));

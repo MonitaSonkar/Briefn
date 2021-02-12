@@ -1,5 +1,6 @@
 package com.smartwebarts.briefnx.dashboard.TabAdapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -45,10 +46,13 @@ import java.util.List;
 import java.util.Set;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-public class NewsFragment extends Fragment implements AdapterPositionListener {
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
+
+public class NewsFragment extends Fragment implements AdapterPositionListener, NewsSection.ClickListener {
     private RecyclerView recyclerView,recyclerViewheader;
     private NewsViewModel viewModel;
     private String catgory_id="",subCat_id="";
+    private static final String DIALOG_TAG = "SectionItemInfoDialogTag";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,6 +93,45 @@ public class NewsFragment extends Fragment implements AdapterPositionListener {
                 if(articles_model!=null&&articles_model.getSubArticleData()!=null)
                 {
                     recyclerViewheader.setVisibility(View.VISIBLE);
+                    SectionedRecyclerViewAdapter sectionedAdapter= new SectionedRecyclerViewAdapter();
+                    List<String> header_content=new ArrayList<>();
+                    for(int i=0;i<articles_model.getSubArticleData().size();i++)
+                    {
+                        if(!header_content.contains(articles_model.getSubArticleData().get(i).getHeader()))
+                            header_content.add(articles_model.getSubArticleData().get(i).getHeader());
+                    }
+                    for(int j=0;j<header_content.size();j++)
+                    {
+                        ArrayList<NewsModelArticle> topnewscontent=new ArrayList<>();
+                        String sub_catId="";
+                        for(int i=0;i<articles_model.getSubArticleData().size();i++)
+                        {
+                            if(header_content.get(j).equalsIgnoreCase(articles_model.getSubArticleData().get(i).getHeader()))
+                            {
+                                sub_catId=articles_model.getSubArticleData().get(i).getSuperCategoryId();
+                                topnewscontent.add(articles_model.getSubArticleData().get(i));
+                            }
+
+                        }
+                        Log.e("NewsFragmentSub===",""+header_content.get(j)+";;;"+sub_catId);
+                        sectionedAdapter.addSection(new NewsSection(
+                                requireActivity(),header_content.get(j),topnewscontent,
+                                NewsFragment.this,sub_catId
+                        ));
+
+
+                    }
+                    recyclerViewheader.setAdapter(sectionedAdapter);
+
+                }
+                else
+                {
+                    recyclerViewheader.setVisibility(View.GONE);
+                }
+
+              /*  if(articles_model!=null&&articles_model.getSubArticleData()!=null)
+                {
+                    recyclerViewheader.setVisibility(View.VISIBLE);
                     ArrayList<ListItem> topnewscontent=new ArrayList<>();
                     List<String> header_content=new ArrayList<>();
                     for(int i=0;i<articles_model.getSubArticleData().size();i++)
@@ -114,7 +157,7 @@ public class NewsFragment extends Fragment implements AdapterPositionListener {
                     recyclerViewheader.setAdapter(adapter);
                     Log.e("NewFragmentChanged",""+topnewscontent.size());
 
-                }
+                }*/
 
 
 
@@ -206,4 +249,33 @@ public class NewsFragment extends Fragment implements AdapterPositionListener {
     }
 
 
+    @SuppressLint("LongLogTag")
+    @Override
+    public void onItemRootViewClicked(@NonNull NewsSection section, int itemAdapterPosition) {
+        Log.e(DIALOG_TAG,"onItemRootViewClicked"+itemAdapterPosition);
+
+    }
+    @SuppressLint("LongLogTag")
+    @Override
+    public void onFooterRootViewClicked(@NonNull NewsSection section, String itemAdapterPosition) {
+//        Log.e(DIALOG_TAG,"onFooterRootViewClicked"+itemAdapterPosition);
+
+      for(int i=0;i<((DashboardActivity)getActivity()).tabLayout.getTabCount();i++)
+
+        {
+            Log.e(DIALOG_TAG,"onFooterRootViewClicked"+((DashboardActivity)getActivity()).tabLayout.getTabAt(i).getTag());
+            if(i!=0)
+            {
+                if(String.valueOf(((DashboardActivity)getActivity()).tabLayout.getTabAt(i).getTag()).equalsIgnoreCase(itemAdapterPosition))
+                {
+                    ((DashboardActivity)getActivity()).tabLayout.getTabAt(i).select();
+
+//                    ((DashboardActivity)getActivity()).tabLayout.setScrollPosition(pageIndex,0f,true);
+                }
+            }
+
+        }
+//        if(((DashboardActivity)getActivity()).tabLayout.getTag());
+
+    }
 }

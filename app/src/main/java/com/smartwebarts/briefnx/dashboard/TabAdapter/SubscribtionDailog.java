@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import com.smartwebarts.briefnx.R;
+import com.smartwebarts.briefnx.SplashScreenActivity;
 import com.smartwebarts.briefnx.dashboard.DashboardActivity;
+import com.smartwebarts.briefnx.dashboard.viewmodel.DashboardViewModel;
 import com.smartwebarts.briefnx.dashboard.viewmodel.NewsViewModel;
 import com.smartwebarts.briefnx.newsdetail.NewsDetailsActivity;
 import com.smartwebarts.briefnx.newsdetail.adapter.SubscriptionAdapter;
@@ -42,35 +45,55 @@ public class SubscribtionDailog extends AppCompatActivity implements PaymentResu
     public List<NewsModelArticle> newslist;
     private NewsViewModel viewModel;
     private String pacakge_id="";
+    private TextView ok;
+    private AppCompatTextView cancel;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.subscription_dailog_layout);
+
         viewModel = ViewModelProviders.of(this).get(NewsViewModel.class);
         viewModel.init();
+        setContentView(R.layout.subscription_dailog_layout);
         RecyclerView recycler_view=findViewById(R.id.recycler_view);
-        TextView ok=findViewById(R.id.ok_tv);
-        AppCompatTextView cancel=findViewById(R.id.cancel_tv);
-        LinearLayoutManager mLayoutManagerVideo = new LinearLayoutManager(this);
+        ok=findViewById(R.id.ok_tv);
+        cancel=findViewById(R.id.cancel_tv);
+        LinearLayoutManager mLayoutManagerVideo = new LinearLayoutManager(SubscribtionDailog.this);
         mLayoutManagerVideo.setOrientation(LinearLayoutManager.VERTICAL);
         recycler_view.setLayoutManager(mLayoutManagerVideo);
-        list = null;
         newslist = null;
-        if(getIntent().hasExtra("Subscription"))
+     /*   if(getIntent().hasExtra("Subscription"))
         {
             list = (List<SubscriptionModel>) getIntent().getSerializableExtra("Subscription");
-        }
+            Log.e("Subscription Dialog===",""+list.size());
+        }*/
         if(getIntent().hasExtra("newslist"))
         {
             newslist = (List<NewsModelArticle>) getIntent().getSerializableExtra("newslist");
+            Log.e("Subscription1:",""+newslist.size());
         }
+        Observer observer1 = new Observer() {
+            @Override
+            public void onChanged(Object o) {
 
-        Log.e("Subscription Dialog===",""+list.size());
+//                UtilMethods.subscribtion_plans = (List<SubscriptionModel>) o;
+                list = (List<SubscriptionModel>) o;
 
-        SubscriptionAdapter adapter =new SubscriptionAdapter(this,list);
-        recycler_view.setAdapter(adapter);
+                Log.e("Subscription Dialog===",""+list.size());
+                SubscriptionAdapter adapter =new SubscriptionAdapter(SubscribtionDailog.this,list);
+                recycler_view.setAdapter(adapter);
+//                Log.e("SubscribtionDailog===",""+UtilMethods.subscribtion_plans.size());
+//                Toast.makeText(SplashScreenActivity.this, ""+UtilMethods.subscribtion_plans.size(), Toast.LENGTH_SHORT).show();
+            }
+        };
+        viewModel.getPackages().observe(SubscribtionDailog.this, observer1);
 
-
+        if (UtilMethods.INSTANCE.isNetworkAvialable(SubscribtionDailog.this)) {
+            Dialog dialog = UtilMethods.getCommonProgressDialog(SubscribtionDailog.this);
+            dialog.show();
+            viewModel.callPackage("packeges", dialog);
+        } else {
+            UtilMethods.INSTANCE.internetNotAvailableMessage(SubscribtionDailog.this);
+        }
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,11 +205,16 @@ public class SubscribtionDailog extends AppCompatActivity implements PaymentResu
             viewModel.callPayment(preferences.getLoginUserId(),preferences.getLoginApiKey(),pacakge_id,payment_id,order_id,signature,status,dialog, new mCallBackResponse() {
                 @Override
                 public void success(String from, String message) {
-                    Intent i=new Intent(SubscribtionDailog.this,NewsDetailsActivity.class);
-                    i.putExtra("newslist", getIntent().getStringExtra("newslist"));
+                   /* Intent i=new Intent(SubscribtionDailog.this,NewsDetailsActivity.class);
+                    i.putExtra("newslist", (Serializable) newslist);
                     i.putExtra("position_id", getIntent().getStringExtra("position"));
+//                    i.putExtra("newslist", (Serializable) list);
                     startActivity(i);
+                    finish();*/
+                    Intent intent = new Intent(SubscribtionDailog.this, DashboardActivity.class);
+                    startActivity(intent);
                     finish();
+                    overridePendingTransition(0, 0);
                 }
 
                 @Override

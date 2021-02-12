@@ -86,7 +86,7 @@ public class NewsRepository {
                 @Override
                 public void onResponse(Call<PaymentResponse> call, Response<PaymentResponse> response) {
                     String strResponse = new Gson().toJson(response.body());
-                    Log.e("NewsRepos===", strResponse);
+                    Log.e("apiPaymentCall===", strResponse);
                     dialog.dismiss();
                     if (response.body() != null) {
                         mCallBackResponse.success("","");

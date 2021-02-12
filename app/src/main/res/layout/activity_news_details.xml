@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -13,63 +13,129 @@
 
         <include layout="@layout/toolbar_back" />
     </LinearLayout>
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".newsdetail.NewsDetailsActivity">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/color_lightgray"
-        >
-        <ImageView
-            android:id="@+id/newsimage"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_height="200dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/news" />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".newsdetail.NewsDetailsActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_lightgray"
             android:orientation="vertical">
-        <WebView
-            android:id="@+id/webview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/newstitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteTextColor"
+                android:fontFamily="@font/helvetica_bold"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+
+            <ImageView
+                android:id="@+id/newsimage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/news" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/image_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteTextColor"
+                android:fontFamily="@font/helvetica_bold"
+                android:padding="5dp"
+                android:text=""
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteTextColor"
+                android:padding="3dp"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/editedby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosans_regular"
+                    android:layout_centerVertical="true"
+                    android:text="Edited By-"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_toRightOf="@+id/editedby"
+                    android:layout_marginLeft="2dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/publisheddate"
+                    android:layout_toRightOf="@+id/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosans_regular"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="1dp"
+                    android:text="Briefn|Updated : 2021-02-09 14:57:38"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <WebView
+                    android:id="@+id/webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/news_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/related_tv"
-                android:padding="5dp"
-                android:visibility="gone"
                 android:background="@color/whiteTextColor"
+                android:padding="5dp"
                 android:text="@string/news_today"
+                android:textColor="@color/textColorDefault"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/related_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/relatednews_recyclerview"
+                android:fontFamily="@font/helvetica_bold"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/related_news"
                 android:textColor="@color/textColorDefault" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/related_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/relatednews_recyclerview"
-            android:fontFamily="@font/helvetica_bold"
-            android:gravity="center_vertical"
-            android:padding="5dp"
-            android:text="@string/related_news"
-            android:textColor="@color/textColorDefault" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/relatednews_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentBottom="true"
-            android:padding="5dp" />
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/relatednews_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentBottom="true"
+                android:padding="5dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

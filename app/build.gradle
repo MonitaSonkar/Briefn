@@ -111,4 +111,7 @@ dependencies {
 
     /*circular_imageView*/
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+/*Recyclerview with header footer*/
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:2.1.0'
 }

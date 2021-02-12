@@ -370,5 +370,93 @@ public class NewsModelArticle implements Serializable {
         this.pmtStatus = pmtStatus;
     }
 
+
+    @SerializedName("photo_caption")
+    @Expose
+    private String photoCaption;
+    @SerializedName("video_caption")
+    @Expose
+    private String videoCaption;
+
+
+
+
+
+    @SerializedName("header")
+    @Expose
+    private String header;
+
+    @SerializedName("slug")
+    @Expose
+    private String slug;
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public String getPhotoCaption() {
+        return photoCaption;
+    }
+
+    public void setPhotoCaption(String photoCaption) {
+        this.photoCaption = photoCaption;
+    }
+
+    public String getVideoCaption() {
+        return videoCaption;
+    }
+
+    public void setVideoCaption(String videoCaption) {
+        this.videoCaption = videoCaption;
+    }
+
+    @SerializedName("cat_priority")
+    @Expose
+    private String catPriority;
+
+    public String getCatPriority() {
+        return catPriority;
+    }
+
+    public void setCatPriority(String catPriority) {
+        this.catPriority = catPriority;
+    }
+
+
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    @SerializedName("byline_pic")
+    @Expose
+    private String bylinePic;
+    @SerializedName("byline_name")
+    @Expose
+    private String bylineName;
+
+    public String getBylinePic() {
+        return bylinePic;
+    }
+
+    public void setBylinePic(String bylinePic) {
+        this.bylinePic = bylinePic;
+    }
+
+    public String getBylineName() {
+        return bylineName;
+    }
+
+    public void setBylineName(String bylineName) {
+        this.bylineName = bylineName;
+    }
 }
 

@@ -7,6 +7,7 @@ public class Urls {
     public static final String SITE_URL = APIClient.BASE_URL;
     public static final String USER_PROFILE_IMAGE = SITE_URL+"img/user/";
     public static final String NEWS_IMGES = SITE_URL+"img/articles/";
+    public static final String NEWS_IMGES_Byline = SITE_URL+"img/bylines/";
     public static final String NEWS_imgesIcon = SITE_URL+"img/super_category/";
 
     public static final String TERMS_CONDITION = SITE_URL + "apppages/terms_condition.php";

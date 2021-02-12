@@ -1,7 +1,7 @@
 package com.smartwebarts.briefnx.dashboard.headerrecylerview;
 
 public interface ListItem {
-    int TYPE_ITEM=0;
-    int TYPE_HEADER=1;
-    int getTypeItem();
+    public int TYPE_ITEM=0;
+    public int TYPE_HEADER=1;
+    public int getTypeItem();
 }

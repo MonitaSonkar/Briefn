@@ -48,57 +48,56 @@ public interface EndPointInterface {
                                         @Field("api_key") String api_key,
                                         @Field("id") String id);
 
+    //for supercategory
     @POST("controller/api1/common/selectAll.php")
     @FormUrlEncoded
-    Call<List<NewsModel>>newsCurrent(@Field("tbname") String tbname);
-//for supercategory
+    Call<List<NewsModel>> newsCurrent(@Field("tbname") String tbname);
+
     @POST("controller/api1/common/selectAll.php")
     @FormUrlEncoded
-    Call<List<NewsSubCategoryModel>>subCategory(@Field("tbname") String tbname);
+    Call<List<NewsSubCategoryModel>> subCategory(@Field("tbname") String tbname);
 
     //for subcategory
-@POST("controller/api1/common/selectOneByColumn.php")
+    @POST("controller/api1/common/selectOneByColumn.php")
     @FormUrlEncoded
-    Call<List<NewsByCategoryModel>>topCurrentNews(@Field("tbname") String tbname,
+    Call<List<NewsByCategoryModel>> topCurrentNews(@Field("tbname") String tbname,
                                                    @Field("column") String column,
                                                    @Field("id") String id);
 
-//for news article
+    //for news article
 //    @POST("controller/api1/common/selectOneByColumn.php")
     @POST("controller/api1/common/getArticle.php")
     @FormUrlEncoded
-
-    Call<Articles_Model>article(@Field("user_id") String tbname,
-                                @Field("super_category_id") String super_category_id,
-                                @Field("article_category_id") String article_category_id,
-                                @Field("lang") String lang,
-                                @Field("search") String search_text
-                                           );
+    Call<Articles_Model> article(@Field("user_id") String tbname,
+                                 @Field("super_category_id") String super_category_id,
+                                 @Field("article_category_id") String article_category_id,
+                                 @Field("lang") String lang,
+                                 @Field("search") String search_text
+    );
 
 
     @POST("controller/api1/common/insert2.php")
     @FormUrlEncoded
-
-    Call<PaymentResponse>getPaymentApi(@Field("user_id") String user_id,
-                                       @Field("tbname") String tbname,
-                                       @Field("packeges_id") String packeges_id,
-                                       @Field("payment_id") String payment_id,
-                                       @Field("order_id") String order_id,
-                                       @Field("signature") String signature,
-                                       @Field("status") String status
-                                           );
+    Call<PaymentResponse> getPaymentApi(@Field("user_id") String user_id,
+                                        @Field("tbname") String tbname,
+                                        @Field("packeges_id") String packeges_id,
+                                        @Field("payment_id") String payment_id,
+                                        @Field("order_id") String order_id,
+                                        @Field("signature") String signature,
+                                        @Field("status") String status
+    );
 
 
     @POST("controller/api1/common/selectAll.php")
     @FormUrlEncoded
-    Call<List<SubscriptionModel>>getPackage_Api(@Field("tbname") String tbname);
+    Call<List<SubscriptionModel>> getPackage_Api(@Field("tbname") String tbname);
 
-//for youtube
+    //for youtube
     @GET("youtube/v3/search")
-    Call <YoutubeMainModel>youtube(@Query("part") String part,
-                                        @Query("channelId") String channelId,
-                                        @Query("pageToken") String page_token,
-                                        @Query("key") String key);
+    Call<YoutubeMainModel> youtube(@Query("part") String part,
+                                   @Query("channelId") String channelId,
+                                   @Query("pageToken") String page_token,
+                                   @Query("key") String key);
 
 
     @POST("controller/api1/common/insert.php")
@@ -130,8 +129,9 @@ public interface EndPointInterface {
     Call<MessageModel> updateAccessToken(@Field("id") String id,
                                        /* @Field("loginid") String loginid,
                                         @Field("api_key") String api_key,*/
-                                        @Field("tbname") String tbname,
-                                        @Field("access_token") String _token);
+                                         @Field("tbname") String tbname,
+                                         @Field("access_token") String _token);
+
     @Multipart
     @POST("controller/api/common/update.php")
     Call<MessageModel> updateStatus(@Part("id") RequestBody id,
@@ -140,7 +140,6 @@ public interface EndPointInterface {
                                     @Part("tbname") RequestBody tbname,
                                     @Part("status") RequestBody status,
                                     @Part("venorid") RequestBody vendorid);
-
 
 
     @POST("controller/api/common/dashboardDetails.php")
@@ -177,11 +176,11 @@ public interface EndPointInterface {
 
     @POST("controller/api1/common/selectAll.php")
     @FormUrlEncoded
-    Call<List<StateModel>> getState(@Field("tbname")String states);
+    Call<List<StateModel>> getState(@Field("tbname") String states);
 
 
     @POST("controller/api1/common/selectOneByColumn.php")
     @FormUrlEncoded
     Call<List<StateModel>> getCity(
-            @Field("id")String states, @Field("tbname")String cities, @Field("column")String state_id1);
+            @Field("id") String states, @Field("tbname") String cities, @Field("column") String state_id1);
 }
