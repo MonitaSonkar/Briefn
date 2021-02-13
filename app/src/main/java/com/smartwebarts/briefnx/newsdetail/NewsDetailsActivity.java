@@ -2,15 +2,19 @@ package com.smartwebarts.briefnx.newsdetail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -26,16 +30,18 @@ import com.smartwebarts.briefnx.utils.Urls;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.http.Url;
 
 public class NewsDetailsActivity extends AppCompatActivity {
     private RecyclerView relatednews_recyclerview;
     private TextView news_description, related_tv,image_caption,publisheddate;
     public List<NewsModelArticle> newslist;
-    private ImageView newsimage,icon;
+    private ImageView newsimage;
     private String position_id = "";
     private WebView webview;
     private AppCompatTextView newstitle;
+    private CircleImageView icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +93,37 @@ public class NewsDetailsActivity extends AppCompatActivity {
                 .load(Urls.NEWS_IMGES_Byline + newslist.get(index).getBylinePic())
                 .placeholder(R.drawable.img_not_found)
                 .into(icon);
+
+    /*    SpannableStringBuilder builder1 = new SpannableStringBuilder();
+        String red1 ="Edited By- ";
+        String red2 ="     "+newslist.get(index).getBylineName().trim()+"|Updated :"+newslist.get(index).getPublishDate();
+        int end=red2.length()-red1.length();
+        SpannableString redSpannable1= new SpannableString(red1);
+//        redSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.iconColor)), 0, red.length(), 0);
+        builder1.append(red1);
+        builder1.append(red2);
+
+        Drawable image = getResources().getDrawable(R.drawable.logo);
+        image.mutate();
+        image.setBounds(0, 0,
+                35,
+                35);
+        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BASELINE);
+        Log.e("StringBuilder:",+end+";;Total;"+red2.length()+";;;"+builder1.length());
+        builder1.setSpan(
+                imageSpan, // Span to add
+                red1.length(), // Start of the span (inclusive)
+                16, // End of the span (exclusive)
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                  publisheddate.setText(builder1, TextView.BufferType.SPANNABLE);*/
+
+
+
+
+
         String newscontent = Html.fromHtml(newslist.get(index).getDescription()).toString();
         news_description.setText(newscontent);
-        publisheddate.setText(newslist.get(index).getBylineName().trim()+"|Updated :"+newslist.get(index).getPublishDate().trim());
+        publisheddate.setText(newslist.get(index).getBylineName().trim()+"|"+newslist.get(index).getPublishDate().trim());
         image_caption.setText(newslist.get(index).getPhotoCaption());
         webview.setVerticalScrollBarEnabled(true);
         webview.getSettings().setJavaScriptEnabled(true);

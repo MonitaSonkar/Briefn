@@ -72,7 +72,8 @@ public interface EndPointInterface {
                                  @Field("super_category_id") String super_category_id,
                                  @Field("article_category_id") String article_category_id,
                                  @Field("lang") String lang,
-                                 @Field("search") String search_text
+                                 @Field("search") String search_text,
+                                 @Field("page") int page_count
     );
 
 
@@ -96,6 +97,7 @@ public interface EndPointInterface {
     @GET("youtube/v3/search")
     Call<YoutubeMainModel> youtube(@Query("part") String part,
                                    @Query("channelId") String channelId,
+                                   @Query("order") String order,
                                    @Query("pageToken") String page_token,
                                    @Query("key") String key);
 

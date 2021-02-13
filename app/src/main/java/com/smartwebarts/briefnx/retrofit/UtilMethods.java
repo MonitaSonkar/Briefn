@@ -477,7 +477,7 @@ public enum UtilMethods {
 
     public void youTube(final Context context,final mCallBackResponse callBackResponse) {
 
-        if (UtilMethods.INSTANCE.isNetworkAvialable(context)) {
+        /*if (UtilMethods.INSTANCE.isNetworkAvialable(context)) {
             final Dialog dialog = getProgressDialog(context);
             dialog.show();
             try {
@@ -485,7 +485,7 @@ public enum UtilMethods {
                 AppSharedPreferences preferences = new AppSharedPreferences(((Activity) context).getApplication());
 
                 EndPointInterface git = ApiclientsYoutube.getClient().create(EndPointInterface.class);
-                Call<YoutubeMainModel> call = git.youtube( "snippet",youtube_channel_id,"",context.getResources().getString(R.string.youtube_api_key));
+                Call<YoutubeMainModel> call = git.youtube( "snippet",youtube_channel_id,"date",context.getResources().getString(R.string.youtube_api_key));
                 call.enqueue(new Callback <YoutubeMainModel>() {
                     @Override
                     public void onResponse(Call <YoutubeMainModel> call, Response<YoutubeMainModel> response) {
@@ -494,12 +494,12 @@ public enum UtilMethods {
                         Log.e("youtube==",strResponse);
                         if (response.body()!=null) {
                             callBackResponse.success("", strResponse);
-                           /* if (response.body().size()>0) {
+                           *//* if (response.body().size()>0) {
 
-                            }*/
-                            /*else {
+                            }*//*
+                            *//*else {
                                 callBackResponse.fail("Unable to get response from server");
-                            }*/
+                            }*//*
                         } else {
                             callBackResponse.fail("Unable to get response from server");
 //
@@ -519,7 +519,7 @@ public enum UtilMethods {
             }
         } else {
             UtilMethods.INSTANCE.internetNotAvailableMessage(context);
-        }
+        }*/
     }
 
 

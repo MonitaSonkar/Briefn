@@ -231,7 +231,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void onChanged(Object o) {
                 list = (List<NewsModel>) o;
                 setAdapter(list);
-                setTopNewsViewpager();
+//                setTopNewsViewpager();
             }
         };
         mViewModel.getCategory().observe(DashboardActivity.this, observer);
@@ -245,7 +245,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
                     viewPager.setVisibility(View.VISIBLE);
                     setSubCatAdapter(CotegoryModel);
-                    dataUpdated(CotegoryModel.get(0).getId(), CotegoryModel.get(0).getSuperCategoryId());
+//                    dataUpdated(CotegoryModel.get(0).getId(), CotegoryModel.get(0).getSuperCategoryId());
                 }
 
             }
@@ -293,6 +293,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     public synchronized void dataUpdated(String id, String superCategoryId) {
         for (AdapterPositionListener mlistener : listener) {
+            Log.e("Dashboard==", "dataUpdated: "+listener.size());
             mlistener.onClick(id, superCategoryId);
         }
     }
@@ -649,9 +650,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             TabLayoutAdapter adapter = new TabLayoutAdapter(getSupportFragmentManager(), newsByCategoryModelArrayListeng, language_set);
             if (newsByCategoryModelArrayListeng != null && newsByCategoryModelArrayListeng.size() > 0) {
                 for (int i = 0; i < newsByCategoryModelArrayListeng.size(); i++) {
-//                NewsFragment newsFragment = new NewsFragment(cotegoryModel.get(i));
+                    Log.e("Dashboard", "setTablayout: " );
                     NewsFragment newsFragment = new NewsFragment();
-//                newsFragment.setNewsByCategoryModel(cotegoryModel.get(i));
                     adapter.add(newsFragment);
                 }
             }
@@ -665,12 +665,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     private void setTopNewsViewpager() {
         viewPager.removeAllViews();
+//        listener = new ArrayList<>();
         TopNewsViewpagerAdapter adapter = new TopNewsViewpagerAdapter(getSupportFragmentManager());
         subCat_tablayout.setVisibility(View.GONE);
         viewPager.setVisibility(View.VISIBLE);
         NewsFragment newsFragment = new NewsFragment();
         adapter.add(newsFragment);
         viewPager.setAdapter(adapter);
+        Log.e("Dashboard==", "setTopNewsViewpager: "+listener.size() );
         dataUpdated("", "");
     }
 

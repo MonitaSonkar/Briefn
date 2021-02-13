@@ -50,8 +50,6 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHolder> {
-
-
     private List<NewsModelArticle>list;
     FragmentActivity context;
     private NewsViewModel viewModel;
@@ -60,14 +58,11 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHo
         this.context = context;
         this.list=list;
         this.viewModel=viewModel;
-
     }
     @NonNull
     @Override
     public MYviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         return new MYviewHolder(LayoutInflater.from(context).inflate(R.layout.home_page_layout, parent, false));
-
     }
 
     @Override
@@ -91,10 +86,7 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHo
         holder.news_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 UsefullMethods.share_news(context,list.get(position));
-
-
             }
         });
     }
@@ -103,6 +95,11 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHo
     public int getItemCount() {
         return list.size();
 
+    }
+
+    public void setData(List<NewsModelArticle> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     public class MYviewHolder extends RecyclerView.ViewHolder {
@@ -127,8 +124,6 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MYviewHo
                     if(list.get(getAdapterPosition()).getPmtStatus().equalsIgnoreCase("0"))
                     {
                         showSubscriptionDailog(UtilMethods.subscribtion_plans,list.get(getAdapterPosition()).getId());
-
-
                     }
                     else
                     {

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
@@ -32,6 +33,7 @@ import com.smartwebarts.briefnx.dashboard.headerrecylerview.SubArticleTopNews;
 import com.smartwebarts.briefnx.dashboard.viewmodel.DashboardViewModel;
 import com.smartwebarts.briefnx.dashboard.viewmodel.NewsResultCallback;
 import com.smartwebarts.briefnx.dashboard.viewmodel.NewsViewModel;
+import com.smartwebarts.briefnx.models.YoutubeItemsModels;
 import com.smartwebarts.briefnx.newsdetail.model.Articles_Model;
 import com.smartwebarts.briefnx.newsdetail.model.NewsModelArticle;
 import com.smartwebarts.briefnx.newsdetail.model.PaymentArticleModel;
@@ -39,6 +41,7 @@ import com.smartwebarts.briefnx.retrofit.UtilMethods;
 import com.smartwebarts.briefnx.retrofit.mCallBackResponse;
 import com.smartwebarts.briefnx.utils.AppSharedPreferences;
 import com.smartwebarts.briefnx.utils.UsefullMethods;
+import com.smartwebarts.briefnx.youtube.YoutubeActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -72,8 +75,8 @@ public class NewsFragment extends Fragment implements AdapterPositionListener, N
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView=view.findViewById(R.id.recyclerView);
-        recyclerViewheader=view.findViewById(R.id.recyclerViewheader);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerViewheader = view.findViewById(R.id.recyclerViewheader);
         getObserver();
     }
 
@@ -129,39 +132,6 @@ public class NewsFragment extends Fragment implements AdapterPositionListener, N
                     recyclerViewheader.setVisibility(View.GONE);
                 }
 
-              /*  if(articles_model!=null&&articles_model.getSubArticleData()!=null)
-                {
-                    recyclerViewheader.setVisibility(View.VISIBLE);
-                    ArrayList<ListItem> topnewscontent=new ArrayList<>();
-                    List<String> header_content=new ArrayList<>();
-                    for(int i=0;i<articles_model.getSubArticleData().size();i++)
-                    {
-                        if(!header_content.contains(articles_model.getSubArticleData().get(i).getHeader()))
-                        header_content.add(articles_model.getSubArticleData().get(i).getHeader());
-                    }
-
-                    for(int j=0;j<header_content.size();j++)
-                    {
-                        topnewscontent.add(new HeaderModel(header_content.get(j)));
-                        for(int i=0;i<articles_model.getSubArticleData().size();i++)
-                        {
-                            if(header_content.get(j).equalsIgnoreCase(articles_model.getSubArticleData().get(i).getHeader()))
-                            {
-                                topnewscontent.add(new Items(articles_model.getSubArticleData().get(i)));
-                            }
-
-                        }
-
-                    }
-                    HeaderRecyclerAdapter adapter=new HeaderRecyclerAdapter(requireActivity(),topnewscontent);
-                    recyclerViewheader.setAdapter(adapter);
-                    Log.e("NewFragmentChanged",""+topnewscontent.size());
-
-                }*/
-
-
-
-
 
             }
         };
@@ -192,9 +162,24 @@ public class NewsFragment extends Fragment implements AdapterPositionListener, N
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.e("News fragment===","onDestroyView");
+//        ((DashboardActivity) getActivity()).unregisterDataUpdateListener(this);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.e("News fragment===","onDetach");
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
+        Log.e("News fragment===","onDestroy");
         ((DashboardActivity) getActivity()).unregisterDataUpdateListener(this);
+
     }
 
     private void setAdapter(List<NewsModelArticle> list)
@@ -230,7 +215,7 @@ public class NewsFragment extends Fragment implements AdapterPositionListener, N
             subCat_id=superCategoryId;
             Dialog dialog = UtilMethods.getCommonProgressDialog(requireActivity());
             dialog.show();
-            viewModel.callArticles(preferences.getLoginUserId(),position,superCategoryId,language_set,dialog,"", new mCallBackResponse() {
+            viewModel.callArticles(preferences.getLoginUserId(),position,superCategoryId,language_set,dialog,"",1, new mCallBackResponse() {
                 @Override
                 public void success(String from, String message) {
                 }

@@ -14,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.smartwebarts.briefnx.R;
+import com.smartwebarts.briefnx.dashboard.TabAdapter.SubscribtionDailog;
 import com.smartwebarts.briefnx.newsdetail.model.NewsModelArticle;
+import com.smartwebarts.briefnx.newsdetail.model.SubscriptionModel;
+import com.smartwebarts.briefnx.retrofit.UtilMethods;
 import com.smartwebarts.briefnx.utils.Urls;
 
 import java.io.Serializable;
@@ -77,13 +80,31 @@ public class NewsDetailAdapter extends RecyclerView.Adapter<NewsDetailAdapter.MY
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i=new Intent(activity, NewsDetailsActivity.class);
-                    i.putExtra("newslist", (Serializable) newslist);
-                    i.putExtra("position_id", arrayList.get(getAdapterPosition()).getId());
-                    activity.startActivity(i);
-                    activity.finish();
+                    if(newslist.get(getAdapterPosition()).getPmtStatus().equalsIgnoreCase("0"))
+                    {
+                        showSubscriptionDailog(UtilMethods.subscribtion_plans,newslist.get(getAdapterPosition()).getId());
+                    }
+                    else
+                    {
+                        Intent i=new Intent(activity, NewsDetailsActivity.class);
+                        i.putExtra("newslist", (Serializable) newslist);
+                        i.putExtra("position_id", arrayList.get(getAdapterPosition()).getId());
+                        activity.startActivity(i);
+//                        activity.finish();
+                    }
+
                 }
             });
         }
+    }
+
+    private void showSubscriptionDailog(List<SubscriptionModel> package_list, String adapterPosition) {
+
+        Intent i= new Intent(activity, SubscribtionDailog.class);
+        i.putExtra("Subscription", (Serializable) package_list);
+        i.putExtra("newslist", (Serializable) newslist);
+        i.putExtra("position_id", adapterPosition);
+        activity.startActivity(i);
+
     }
 }

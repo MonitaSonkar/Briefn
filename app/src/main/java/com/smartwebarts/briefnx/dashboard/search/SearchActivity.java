@@ -99,7 +99,7 @@ public class SearchActivity extends AppCompatActivity {
         {
             Dialog dialog = UtilMethods.getCommonProgressDialog(SearchActivity.this);
             dialog.show();
-            viewModel.callArticles(preferences.getLoginUserId(),"","",language_set,dialog,search_text, new mCallBackResponse() {
+            viewModel.callArticles(preferences.getLoginUserId(),"","",language_set,dialog,search_text,1, new mCallBackResponse() {
                 @Override
                 public void success(String from, String message) {
 

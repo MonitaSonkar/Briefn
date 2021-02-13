@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -151,17 +152,9 @@ public class YoutubeAdapter  extends RecyclerView.Adapter<YoutubeAdapter.MYviewH
 
 
         holder.youtube_title.setText(new_str/*youtubeMainModels.get(position).getSnippet().getTitle()*/);
+
         holder.youtube_time.setText(youtubeMainModels.get(position).getSnippet().getPublishTime());
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//    @Override
-//    public void onClick(View view) {
-//        Intent i=new Intent(context, YoutubeVedioViewActivity.class);
-//        i.putExtra("videoId",youtubeMainModels.get(position).getId().getVideoId());
-//      //  Log.d("Deepika==", "onClick: "+youtubeMainModels.get(position).getId().getVideoId());
-//       context.startActivity(i);
-//
-//    }
-//});
+
     }
 
     @Override
@@ -186,9 +179,17 @@ public class YoutubeAdapter  extends RecyclerView.Adapter<YoutubeAdapter.MYviewH
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i=new Intent(context, YoutubeVedioViewActivity.class);
-                    i.putExtra("videoId",youtubeMainModels.get(getAdapterPosition()).getId().getVideoId());
-                    context.startActivity(i);
+                    if(youtubeMainModels.get(getAdapterPosition()).getId().getVideoId()!=null)
+                    {
+                        Intent i=new Intent(context, YoutubeVedioViewActivity.class);
+                        i.putExtra("videoId",youtubeMainModels.get(getAdapterPosition()).getId().getVideoId());
+                        context.startActivity(i);
+                    }
+                    else
+                    {
+                        Toast.makeText(context, "There is no video", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
         }

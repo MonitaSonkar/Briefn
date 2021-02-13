@@ -255,6 +255,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/proximanovaregular"
                         android:text="@string/founder_of_briefnn"
+                        android:visibility="gone"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -335,7 +336,7 @@
                                 android:autoLink="phone"
                                 android:fontFamily="@font/proximanovaregular"
                                 android:padding="2dp"
-                                android:text="+91 7007613712"
+                                android:text="+91 7415588314"
                                 android:textSize="15sp" />
 
                             <TextView

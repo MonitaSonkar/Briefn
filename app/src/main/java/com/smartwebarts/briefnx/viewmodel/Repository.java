@@ -188,7 +188,7 @@ public class Repository {
         try {
 //                "UC1NF71EwP41VdjAU1iXdLkw"
             EndPointInterface git = ApiclientsYoutube.getClient().create(EndPointInterface.class);
-            Call<YoutubeMainModel> call = git.youtube( "snippet", UtilMethods.youtube_channel_id,page_token,UtilMethods.youtube_apiKey);
+            Call<YoutubeMainModel> call = git.youtube( "snippet", UtilMethods.youtube_channel_id,"date",page_token,UtilMethods.youtube_apiKey);
             call.enqueue(new Callback <YoutubeMainModel>() {
                 @Override
                 public void onResponse(Call <YoutubeMainModel> call, Response<YoutubeMainModel> response) {

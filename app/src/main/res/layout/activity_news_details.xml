@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -34,7 +35,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp" />
+                android:textSize="@dimen/_20sdp" />
 
             <ImageView
                 android:id="@+id/newsimage"
@@ -57,10 +58,11 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/whiteTextColor"
+                android:gravity="center_horizontal"
                 android:padding="3dp"
                 >
                 <androidx.appcompat.widget.AppCompatTextView
@@ -68,12 +70,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/notosans_regular"
-                    android:layout_centerVertical="true"
                     android:text="Edited By-"
+                    android:visibility="gone"
+                    android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/icon"
+                    android:layout_toRightOf="@+id/editedby"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="2dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:civ_border_color="@color/black"
+                    app:civ_border_width="0.5dp" />
+                <!--<ImageView
                     android:id="@+id/icon"
                     android:layout_toRightOf="@+id/editedby"
                     android:layout_marginLeft="2dp"
@@ -82,21 +94,24 @@
                     android:layout_alignParentTop="true"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"
-                    />
+                    />-->
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/publisheddate"
                     android:layout_toRightOf="@+id/icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/notosans_regular"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="1dp"
                     android:text="Briefn|Updated : 2021-02-09 14:57:38"
-                    android:gravity="center"
+                    android:layout_marginLeft="1dp"
+                    android:inputType="textMultiLine"
                     android:textColor="@color/black"
+                    android:gravity="start"
+                    android:textAlignment="textStart"
                     android:textSize="@dimen/_14sdp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

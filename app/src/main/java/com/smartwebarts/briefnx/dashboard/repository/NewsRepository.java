@@ -32,12 +32,12 @@ public class NewsRepository {
         mutableLiveDatapackages = new MutableLiveData<>();
     }
 
-    public void getArticlesCall(String loginUserId, String cotegoryModels, String superCategoryId, String language_set, Dialog dialog, String search_text, mCallBackResponse mCallBackResponse) {
+    public void getArticlesCall(String loginUserId, String cotegoryModels, String superCategoryId, String language_set, Dialog dialog, String search_text,int page_count, mCallBackResponse mCallBackResponse) {
         try {
 
             EndPointInterface git = APIClient.getClient().create(EndPointInterface.class);
 
-            Call<Articles_Model> call = git.article(loginUserId, superCategoryId, cotegoryModels, language_set,search_text);
+            Call<Articles_Model> call = git.article(loginUserId, superCategoryId, cotegoryModels, language_set,search_text,page_count);
             call.enqueue(new Callback<Articles_Model>() {
                 @Override
                 public void onResponse(Call<Articles_Model> call, Response<Articles_Model> response) {
@@ -50,9 +50,12 @@ public class NewsRepository {
                         {
                             mCallBackResponse.fail("No Search Result found");
                         }
-
-
-                    } else {
+                        else
+                        {
+                            mCallBackResponse.success("","");
+                        }
+                    }
+                    else {
                         mutableLiveData.postValue(null);
                         mCallBackResponse.fail("No Search Result found");
                     }

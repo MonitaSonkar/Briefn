@@ -29,8 +29,8 @@ public class NewsViewModel extends AppSharedPreferences {
         mutableLiveDatapackages = newsRepository.getSubscription();
     }
 
-    public void callArticles(String loginUserId, String id, String sub_id, String language_set, Dialog dialog, String search_text, mCallBackResponse mCallBackResponse) {
-        newsRepository.getArticlesCall(loginUserId,id, sub_id,language_set,dialog,search_text,mCallBackResponse);
+    public void callArticles(String loginUserId, String id, String sub_id, String language_set, Dialog dialog, String search_text,int page_count, mCallBackResponse mCallBackResponse) {
+        newsRepository.getArticlesCall(loginUserId,id, sub_id,language_set,dialog,search_text,page_count,mCallBackResponse);
     }
 
     public void callPayment(String userId, String loginApiKey, String pacakge_id, String payment_id, String order_id, String signature, String status, Dialog dialog, mCallBackResponse mCallBackResponse) {
